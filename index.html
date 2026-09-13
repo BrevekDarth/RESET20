@@ -13,12 +13,12 @@ button,input{font:inherit}button{cursor:pointer}
 .splash{position:fixed;inset:0;z-index:100;background:#15171c;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .55s,visibility .55s}.splash.hide{opacity:0;visibility:hidden;pointer-events:none}
 .splash-logo{font-size:52px;font-weight:950;letter-spacing:-3px;animation:pop .8s ease-out}.splash-logo span{color:#19a463}.splash-logo b{color:#7357e8}.splash-sub{font-size:12px;color:#aeb2bb;margin-top:7px;font-weight:700;opacity:0;animation:fade .5s .4s forwards}
 @keyframes pop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:scale(1)}}@keyframes fade{to{opacity:1}}
-.account{display:none;min-height:100vh;padding:34px 18px 28px;align-items:center;justify-content:center;background:var(--bg)}.account.active{display:flex;flex-direction:column}
+.account{display:none;position:fixed;inset:0;z-index:90;min-height:100vh;overflow:auto;padding:34px 18px 28px;align-items:center;justify-content:center;background:var(--bg)}.account.active{display:flex;flex-direction:column}
 .account-logo{font-size:45px;font-weight:950;letter-spacing:-3px;margin-bottom:25px}.account-logo span{color:var(--green)}.account-logo b{color:var(--purple)}
 .account-card{width:min(430px,100%);background:#fff;border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:0 12px 40px rgba(20,25,35,.08)}
 .small-label{font-size:11px;font-weight:850;color:var(--green);letter-spacing:.5px}.account-card h1{font-size:28px;letter-spacing:-1px;margin:5px 0 7px}.account-card p{font-size:14px;color:var(--muted);margin:0 0 20px}.account-card label{display:block;font-size:12px;font-weight:800;margin:12px 0}.account-card input{margin-top:6px}
 .main-btn{width:100%;border:0;border-radius:14px;background:var(--green);color:#fff;font-weight:850;padding:14px;min-height:48px;margin-top:8px}.account-link,.guest-btn{display:block;width:100%;border:0;background:transparent;padding:12px;font-weight:750;color:#5b43c7}.guest-btn{color:var(--muted)}.account-footer{width:min(430px,100%);text-align:center;color:#92969e;font-size:11px;margin-top:14px}
-.app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:92px;opacity:0;transition:opacity .45s}.app.ready{opacity:1}
+.app{display:none;max-width:760px;margin:auto;min-height:100vh;padding-bottom:92px;opacity:0;transition:opacity .45s}.app.ready{display:block;opacity:1}
 .top{padding:22px 18px 8px;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:950;letter-spacing:-1.5px;font-size:25px}.logo span{color:var(--green)}.logo b{color:var(--purple)}.date{font-size:12px;color:var(--muted);font-weight:750}
 main{padding:8px 16px}.screen{display:none}.screen.active{display:block}.hero{background:#15171c;color:#fff;border-radius:26px;padding:22px;margin:8px 0 16px}.hero .small{color:#aeb2bb;font-size:12px;font-weight:750}.hero h1{margin:4px 0 8px;font-size:29px;letter-spacing:-1px}.hero p{margin:0;color:#c9ccd2;font-size:14px}
 .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:0 8px 28px rgba(20,25,35,.07);margin-bottom:12px}.card h3{margin:0 0 5px;font-size:15px}.muted{color:var(--muted);font-size:12px}.big{font-size:28px;font-weight:900;letter-spacing:-1px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -30,7 +30,12 @@ input{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;ba
 .nav{position:fixed;z-index:10;bottom:0;left:50%;transform:translateX(-50%);width:min(760px,100%);padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.nav button{border:0;background:transparent;color:#8a8e96;padding:7px 2px;border-radius:13px;font-size:11px;font-weight:800;min-height:56px}.nav button.active{color:var(--green);background:#eff9f4}.ico{font-size:20px;display:block;line-height:22px;margin-bottom:2px}
 @media(min-width:650px){main{padding:8px 22px}.grid.three{grid-template-columns:repeat(3,1fr)}}
 
-/* RESET20 test v6 — water + calories */
+/* RESET20 test v7 — trackers scoped to Oggi + separate account screen */
+.r20-trackers{display:flex;flex-direction:column;gap:12px;margin-top:12px;padding-bottom:8px}
+.r20-trackers .r20-water,.r20-trackers .r20-cal{margin-top:0}
+@media(max-width:520px){.r20-head{flex-direction:column}.r20-goal{align-self:flex-start}.r20-actions{display:grid;grid-template-columns:1fr 1fr}.r20-actions .r20-input{min-width:0;width:100%}.r20-actions form{display:contents}.r20-cal form.r20-actions{display:grid;grid-template-columns:1fr 90px}.r20-cal form.r20-actions .r20-btn{grid-column:1 / -1}.r20-cal form.r20-actions #r20CalName{grid-column:1}.r20-cal form.r20-actions #r20CalInput{grid-column:2}}
+
+/* Tracker styles */
 .r20-water,.r20-cal{margin-top:18px;padding:18px;border:1px solid var(--border,#e5e7eb);border-radius:22px;background:var(--card,#fff)}
 .r20-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
 .r20-title{font-weight:800;font-size:18px}.r20-sub{font-size:13px;color:var(--muted,#6b7280);margin-top:3px}
@@ -66,9 +71,9 @@ input{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;ba
   <label>Password<input id="accountPassword" type="password" autocomplete="new-password" placeholder="••••••••"></label>
   <button class="main-btn" id="accountMain">Crea account</button>
   <button class="account-link" id="accountSwitch">Hai già un account? Accedi</button>
-  <button class="guest-btn" id="guestBtn">Continua come ospite</button>
+  <button class="guest-btn" id="skipBtn">Salta per ora (beta)</button>
  </div>
- <div class="account-footer">Nella versione definitiva i dati dell'account saranno sincronizzati nel cloud.</div>
+ <div class="account-footer">In beta puoi saltare la registrazione e provare l'app. Nella versione definitiva l'account sarà obbligatorio.</div>
 </div>
 
 <div id="app" class="app">
@@ -83,6 +88,24 @@ input{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;ba
 </div>
 <div class="card"><div class="row"><div><h3>Lettura</h3><div class="muted">Compare come attività solo se scelta nei tuoi obiettivi.</div></div><div class="big" id="readValue">0</div></div><div class="progress"><div class="bar" id="readBar"></div></div><div class="inputrow"><input id="readInput" type="number" min="0" placeholder="Minuti letti"><button class="btn purple" id="readBtn">Salva</button></div></div>
 <div class="card"><div class="row"><div><h3>Promemoria</h3><div class="muted">Ricorda ciò che manca durante la giornata.</div></div><button class="btn purple" id="notifyBtn">Attiva</button></div><div class="muted" id="notificationStatus" style="margin-top:8px">Notifiche non attive.</div></div>
+
+<div class="r20-trackers">
+<section class="r20-water" id="r20Water" aria-label="Contatore acqua">
+  <div class="r20-head"><div><div class="r20-title">💧 Acqua</div><div class="r20-sub">Quanto hai bevuto oggi.</div></div><div class="r20-goal" id="r20WaterGoal">Obiettivo 2.000 ml</div></div>
+  <div class="r20-water-glass"><div class="r20-water-liquid" id="r20WaterLiquid"></div><div class="r20-water-pct" id="r20WaterPct">0%</div></div>
+  <div class="r20-values"><div><div class="r20-current" id="r20WaterCurrent">0 ml</div><div class="r20-sub">bevuti oggi</div></div><div class="r20-rem" id="r20WaterRem">2.000 ml rimanenti</div></div>
+  <form class="r20-actions" id="r20WaterForm"><input class="r20-input" id="r20WaterInput" type="number" min="1" max="10000" step="1" inputmode="numeric" placeholder="es. 200 ml" aria-label="Millilitri d'acqua"><button class="r20-btn primary" type="submit">+ Aggiungi</button></form>
+  <div class="r20-actions"><button class="r20-btn" type="button" data-r20-water="200">+200 ml</button><button class="r20-btn" type="button" data-r20-water="500">+500 ml</button></div>
+</section>
+
+<section class="r20-cal" id="r20Cal" aria-label="Contatore calorie">
+  <div class="r20-head"><div><div class="r20-title">🔥 Calorie</div><div class="r20-sub">Calorie registrate oggi.</div></div><div class="r20-goal" id="r20CalGoal">Obiettivo 2.000 kcal</div></div>
+  <div class="r20-cal-track"><div class="r20-cal-fill" id="r20CalFill"></div></div>
+  <div class="r20-values"><div><div class="r20-current" id="r20CalCurrent">0 kcal</div><div class="r20-sub">registrate oggi</div></div><div class="r20-rem" id="r20CalRem">2.000 kcal rimanenti</div></div>
+  <form class="r20-actions" id="r20CalForm"><input class="r20-input" id="r20CalName" type="text" maxlength="80" placeholder="es. Pasta al pomodoro" aria-label="Nome alimento"><input class="r20-input" id="r20CalInput" type="number" min="1" max="10000" step="1" inputmode="numeric" placeholder="kcal" aria-label="Calorie"><button class="r20-btn primary" type="submit">+ Aggiungi</button></form>
+  <div class="r20-actions"><button class="r20-btn" type="button" data-r20-cal="200">+200 kcal</button><button class="r20-btn" type="button" data-r20-cal="500">+500 kcal</button></div>
+</section>
+</div>
 </section>
 
 <section id="setup" class="screen">
@@ -93,9 +116,7 @@ input{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;ba
 
 <section id="progress" class="screen"><div class="sectiontitle">Progressi</div><div class="month" id="monthPicker"></div><div class="grid three"><div class="kpi"><div class="value" id="pDays">0</div><div class="name">GIORNI ATTIVI</div></div><div class="kpi"><div class="value" id="pRead">0</div><div class="name">MIN LETTURA</div></div><div class="kpi"><div class="value" id="pWalk">0</div><div class="name">MIN CAMMINATA</div></div></div><div class="card" style="margin-top:12px"><div class="row"><div><h3>Peso</h3><div class="muted">Ultima misurazione del mese</div></div><div class="big" id="pWeight">—</div></div><div class="progress"><div class="bar" id="weightBar"></div></div><div class="muted" style="margin-top:8px" id="weightNote">Baseline: 133,9 kg</div></div><div class="card"><h3>Riepilogo mese</h3><div id="monthSummary" class="empty">Completa qualche giornata per vedere i dati.</div></div></section>
 
-<section id="money" class="screen"><div class="sectiontitle">Soldi</div><div class="hero moneyhero"><div class="muted">RISPARMIO PREVISTO</div><div class="big">€400</div><p>Budget base €1.000 · spese fisse €100 · budget effettivo €900</p></div><div class="grid"><div class="card"><div class="muted">SPESO QUESTO MESE</div><div class="big">€<span id="spentMonth">0,00</span></div></div><div class="card"><div class="muted">RISPARMIATO CUMULATO</div><div class="big">€<span id="savedTotal">400,00</span></div></div></div><div class="card"><div class="row"><div><h3>Quanto posso spendere?</h3><div class="muted">Budget effettivo rimasto</div></div><div class="big">€<span id="availableMonth">900,00</span></div></div><div class="progress"><div class="bar" id="moneyBar"></div></div><div class="muted" style="margin-top:8px" id="dailyMoney"></div></div><div class="card"><h3>Registra una spesa</h3><div class="inputrow"><input id="expenseInput" type="number" min="0" step="0.01" placeholder="€ importo"><button class="btn primary" id="expenseBtn">Aggiungi</button></div></div><div class="card"><h3>Spese recenti</h3><div id="expensesList" class="empty">Nessuna spesa registrata.</div></div><div class="ad" id="adSlot">SPAZIO PUBBLICITARIO · VERSIONE FREE</div><div class="card premium"><div class="muted">RESET20 PREMIUM</div><h3 style="font-size:19px;margin-top:4px">Togli la pubblicità.</h3><div class="muted">Un acquisto semplice, senza complicazioni.</div><div class="premium-grid"><div class="premium-option"><b>€1,99</b><small>Lifetime · una volta sola</small></div><div class="premium-option"><b>€11,99</b><small>Premium · ogni anno</small></div></div></div></section>
-
-<section id="history" class="screen"><div class="sectiontitle">Storico</div><div class="card"><div class="row"><div><h3>RESET20</h3><div class="muted">Il tuo percorso completo</div></div><div class="big" id="lifeDays">1</div></div><div class="muted">giorni dal primo utilizzo</div></div><div class="grid"><div class="kpi"><div class="value" id="lifeRead">0</div><div class="name">MIN LETTI</div></div><div class="kpi"><div class="value" id="lifeWalk">0</div><div class="name">MIN CAMMINATI</div></div><div class="kpi"><div class="value" id="lifeSpent">0</div><div class="name">€ SPESI</div></div><div class="kpi"><div class="value" id="lifeSaved">400</div><div class="name">€ RISPARMIATI</div></div></div><div class="card" style="margin-top:12px"><h3>Giornate</h3><div id="historyList"></div></div></section>
+<section id="money" class="screen"><div class="sectiontitle">Soldi</div><div class="hero moneyhero"><div class="muted">RISPARMIO PREVISTO</div><div class="big">€<span id="budgetSavingsHero">400,00</span></div><p>Entrate €<span id="budgetIncomeHero">1.000,00</span> · spese fisse €<span id="budgetFixedHero">100,00</span> · budget effettivo €<span id="budgetEffectiveHero">900,00</span></p></div><div class="card"><div class="row"><div><h3>Il tuo budget</h3><div class="muted">Personalizzalo come vuoi.</div></div><button class="btn purple" id="editBudgetBtn">Modifica</button></div><div id="budgetEditor" style="display:none;margin-top:14px"><div class="inputrow"><input id="budgetIncome" type="number" min="0" step="0.01" placeholder="Entrate mensili"><input id="budgetFixed" type="number" min="0" step="0.01" placeholder="Spese fisse"></div><div class="inputrow"><input id="budgetSavings" type="number" min="0" step="0.01" placeholder="Risparmio obiettivo"><button class="btn primary" id="saveBudget">Salva</button></div></div></div><div class="grid"><div class="card"><div class="muted">SPESO QUESTO MESE</div><div class="big">€<span id="spentMonth">0,00</span></div></div><div class="card"><div class="muted">RISPARMIATO CUMULATO</div><div class="big">€<span id="savedTotal">400,00</span></div></div></div><div class="card"><div class="row"><div><h3>Quanto posso spendere?</h3><div class="muted">Budget effettivo rimasto</div></div><div class="big">€<span id="availableMonth">900,00</span></div></div><div class="progress"><div class="bar" id="moneyBar"></div></div><div class="muted" style="margin-top:8px" id="dailyMoney"></div></div><div class="card"><h3>Registra una spesa</h3><div class="inputrow"><input id="expenseInput" type="number" min="0" step="0.01" placeholder="€ importo"><button class="btn primary" id="expenseBtn">Aggiungi</button></div></div><div class="card"><h3>Spese recenti</h3><div id="expensesList" class="empty">Nessuna spesa registrata.</div></div><div class="ad" id="adSlot">SPAZIO PUBBLICITARIO · VERSIONE FREE</div><div class="card premium"><div class="muted">RESET20 PREMIUM</div><h3 style="font-size:19px;margin-top:4px">Togli la pubblicità.</h3><div class="muted">Un acquisto semplice, senza complicazioni.</div><div class="premium-grid"><div class="premium-option"><b>€1,99</b><small>Lifetime · una volta sola</small></div><div class="premium-option"><b>€11,99</b><small>Premium · ogni anno</small></div></div></div></section><section id="history" class="screen"><div class="sectiontitle">Storico</div><div class="card"><div class="row"><div><h3>RESET20</h3><div class="muted">Il tuo percorso completo</div></div><div class="big" id="lifeDays">1</div></div><div class="muted">giorni dal primo utilizzo</div></div><div class="grid"><div class="kpi"><div class="value" id="lifeRead">0</div><div class="name">MIN LETTI</div></div><div class="kpi"><div class="value" id="lifeWalk">0</div><div class="name">MIN CAMMINATI</div></div><div class="kpi"><div class="value" id="lifeSpent">0</div><div class="name">€ SPESI</div></div><div class="kpi"><div class="value" id="lifeSaved">400</div><div class="name">€ RISPARMIATI</div></div></div><div class="card" style="margin-top:12px"><h3>Giornate</h3><div id="historyList"></div></div></section>
 </main>
 <nav class="nav"><button data-screen="today" class="active"><span class="ico">✓</span>Oggi</button><button data-screen="progress"><span class="ico">↗</span>Progressi</button><button data-screen="money"><span class="ico">€</span>Soldi</button><button data-screen="history"><span class="ico">☰</span>Storico</button></nav>
 </div>
@@ -118,6 +139,10 @@ try{db=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){db=null}
 if(!db)db={created:today,goals:DEFAULT_GOALS.map(function(g){return Object.assign({},g)}),days:{},expenses:[],account:null};
 if(!Array.isArray(db.goals)||!db.goals.length)db.goals=DEFAULT_GOALS.map(function(g){return Object.assign({},g)});
 if(!db.days)db.days={};if(!Array.isArray(db.expenses))db.expenses=[];if(!db.account)db.account=null;
+db.budget=db.budget&&typeof db.budget==="object"?db.budget:{income:1000,fixed:100,savings:400};
+db.budget.income=Number(db.budget.income)>=0?Number(db.budget.income):1000;
+db.budget.fixed=Number(db.budget.fixed)>=0?Number(db.budget.fixed):100;
+db.budget.savings=Number(db.budget.savings)>=0?Number(db.budget.savings):400;
 if(!db.days[today]){
  db.days[today]={goals:{},read:0,walk:0,weight:null};
  if(today===db.created){db.days[today].goals={shower:true,room:true,read:true,walk:true};db.days[today].read=30;db.days[today].walk=30;db.days[today].weight=133.9}
@@ -148,93 +173,64 @@ function addExpense(){var v=parseFloat(document.getElementById("expenseInput").v
 function renderGoalEditor(){var box=document.getElementById("goalEditor");box.innerHTML="";goals().forEach(function(g,i){var r=document.createElement("div");r.className="task";r.innerHTML='<div style="flex:1"><div class="label">'+esc(g.label)+'</div><small>'+esc(g.sub||"Obiettivo personale")+'</small></div><button class="btn danger">Elimina</button>';r.querySelector("button").addEventListener("click",function(){if(goals().length<=1){alert("Mantieni almeno un obiettivo.");return}db.goals.splice(i,1);save();renderGoalEditor();render()});box.appendChild(r)})}
 function addGoal(){var x=document.getElementById("newGoal"),v=x.value.trim();if(!v)return;db.goals.push({id:"custom_"+Date.now(),label:v,sub:"Obiettivo personale"});x.value="";save();renderGoalEditor();render()}
 function finishSetup(){save();showScreen("today");render()}
-function totalSaved(){var months={};Object.keys(db.days).forEach(function(k){months[monthKey(k)]=1});db.expenses.forEach(function(e){months[monthKey(e.date)]=1});months[monthKey(today)]=1;return Object.keys(months).reduce(function(t,m){var s=db.expenses.filter(function(e){return e.date.indexOf(m)===0}).reduce(function(a,e){return a+Number(e.amount||0)},0);return t+Math.max(0,400-s)},0)}
-function renderMoney(){var m=monthKey(today),s=db.expenses.filter(function(e){return e.date.indexOf(m)===0}).reduce(function(a,e){return a+Number(e.amount||0)},0),a=Math.max(0,900-s);document.getElementById("spentMonth").textContent=euro(s);document.getElementById("availableMonth").textContent=euro(a);document.getElementById("savedTotal").textContent=euro(totalSaved());document.getElementById("moneyBar").style.width=Math.min(100,s/900*100)+"%";document.getElementById("dailyMoney").textContent="Circa €"+euro(a/Math.max(1,daysInMonth(m)-now.getDate()+1))+"/giorno da oggi a fine mese.";var b=document.getElementById("expensesList");if(!db.expenses.length){b.className="empty";b.textContent="Nessuna spesa registrata."}else{b.className="";b.innerHTML=db.expenses.slice(0,10).map(function(e){return '<div class="row" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>Spesa</b><div class="muted">'+dateIT(e.date)+'</div></div><b>€'+euro(e.amount)+'</b></div>'}).join("")}}
+function totalSaved(){var months={};Object.keys(db.days).forEach(function(k){months[monthKey(k)]=1});db.expenses.forEach(function(e){months[monthKey(e.date)]=1});months[monthKey(today)]=1;return Object.keys(months).reduce(function(t,m){var s=db.expenses.filter(function(e){return e.date.indexOf(m)===0}).reduce(function(a,e){return a+Number(e.amount||0)},0);return t+Math.max(0,Number(db.budget&&db.budget.savings||0)-s)},0)}
+function renderMoney(){var m=monthKey(today),s=db.expenses.filter(function(e){return e.date.indexOf(m)===0}).reduce(function(a,e){return a+Number(e.amount||0)},0),b=db.budget,effective=Math.max(0,b.income-b.fixed),a=Math.max(0,effective-s);document.getElementById("budgetSavingsHero").textContent=euro(b.savings);document.getElementById("budgetIncomeHero").textContent=euro(b.income);document.getElementById("budgetFixedHero").textContent=euro(b.fixed);document.getElementById("budgetEffectiveHero").textContent=euro(effective);document.getElementById("spentMonth").textContent=euro(s);document.getElementById("availableMonth").textContent=euro(a);document.getElementById("savedTotal").textContent=euro(totalSaved());document.getElementById("moneyBar").style.width=effective?Math.min(100,s/effective*100)+"%":"0%";document.getElementById("dailyMoney").textContent="Circa €"+euro(a/Math.max(1,daysInMonth(m)-now.getDate()+1))+"/giorno da oggi a fine mese.";var bEl=document.getElementById("expensesList");if(!db.expenses.length){bEl.className="empty";bEl.textContent="Nessuna spesa registrata."}else{bEl.className="";bEl.innerHTML=db.expenses.slice(0,10).map(function(e){return '<div class="row" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><b>Spesa</b><div class="muted">'+dateIT(e.date)+'</div></div><b>€'+euro(e.amount)+'</b></div>'}).join("")}}
 function renderProgress(){var m=window.selMonth||monthKey(today),ks=Object.keys(db.days).filter(function(k){return k.indexOf(m)===0}).sort(),read=0,walk=0,active=0,last=null;ks.forEach(function(k){var d=db.days[k];read+=d.read||0;walk+=d.walk||0;if(Object.keys(d.goals||{}).some(function(id){return d.goals[id]}))active++;if(d.weight!=null)last=d.weight});document.getElementById("pDays").textContent=active;document.getElementById("pRead").textContent=read;document.getElementById("pWalk").textContent=walk;document.getElementById("pWeight").textContent=last==null?"—":Number(last).toLocaleString("it-IT",{minimumFractionDigits:1})+" kg";var loss=BASELINE-(last||BASELINE);document.getElementById("weightBar").style.width=Math.max(0,Math.min(100,loss/20*100))+"%";document.getElementById("weightNote").textContent=last==null?"Baseline: 133,9 kg":"Variazione dalla baseline: "+(loss>=0?"-":"+")+Math.abs(loss).toFixed(1).replace(".",",")+" kg";var s=db.expenses.filter(function(e){return e.date.indexOf(m)===0}).reduce(function(a,e){return a+Number(e.amount||0)},0);document.getElementById("monthSummary").innerHTML="Hai registrato <b>"+active+"</b> giornate attive, <b>"+read+" min</b> di lettura, <b>"+walk+" min</b> di camminata e <b>€"+euro(s)+"</b> di spese.";var mp=document.getElementById("monthPicker");mp.innerHTML="";var months={};Object.keys(db.days).forEach(function(k){months[monthKey(k)]=1});months[monthKey(today)]=1;Object.keys(months).sort().reverse().forEach(function(x){var b=document.createElement("button");b.textContent=monthLabel(x);b.className=x===m?"sel":"";b.addEventListener("click",function(){window.selMonth=x;renderProgress()});mp.appendChild(b)})}
 function renderHistory(){var ks=Object.keys(db.days).sort().reverse();document.getElementById("lifeDays").textContent=Math.max(1,Math.ceil((new Date(today)-new Date(db.created))/86400000)+1);document.getElementById("lifeRead").textContent=ks.reduce(function(a,k){return a+(db.days[k].read||0)},0);document.getElementById("lifeWalk").textContent=ks.reduce(function(a,k){return a+(db.days[k].walk||0)},0);document.getElementById("lifeSpent").textContent=euro(db.expenses.reduce(function(a,e){return a+Number(e.amount||0)},0));document.getElementById("lifeSaved").textContent=euro(totalSaved());document.getElementById("historyList").innerHTML=ks.slice(0,30).map(function(k){var d=db.days[k],done=goals().filter(function(g){return d.goals&&d.goals[g.id]}).length;return '<div class="row" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><b>'+dateIT(k)+'</b><div class="muted">'+done+'/'+goals().length+' obiettivi · lettura '+(d.read||0)+' min · camminata '+(d.walk||0)+' min</div></div><b>'+(d.weight!=null?Number(d.weight).toLocaleString("it-IT",{minimumFractionDigits:1})+" kg":"—")+'</b></div>'}).join("")}
 function updateNotif(){var e=document.getElementById("notificationStatus");if(!("Notification" in window)){e.textContent="Questo browser non supporta le notifiche.";return}e.textContent=Notification.permission==="granted"?"Notifiche attive.":"Notifiche non attive."}
 function enableNotifications(){if(!("Notification" in window)){alert("Questo browser non supporta le notifiche.");return}Notification.requestPermission().then(function(x){updateNotif();if(x==="granted")new Notification("RESET20",{body:"Ciao "+name()+" 👋 Controlla i tuoi obiettivi di oggi."})})}
 function createAccount(){var n=document.getElementById("accountName").value.trim(),e=document.getElementById("accountEmail").value.trim(),pw=document.getElementById("accountPassword").value;if(!n||e.indexOf("@")<1||pw.length<4){alert("Inserisci nome, email valida e password di almeno 4 caratteri.");return}db.account={name:n,email:e,guest:false,premium:false};save();document.getElementById("account").classList.remove("active");document.getElementById("app").classList.add("ready");showScreen("setup");renderGoalEditor();render()}
-function guest(){db.account={name:"Ospite",email:"",guest:true,premium:false};save();document.getElementById("account").classList.remove("active");document.getElementById("app").classList.add("ready");showScreen("setup");renderGoalEditor();render()}
 function render(){document.getElementById("todayDate").textContent=now.toLocaleDateString("it-IT",{weekday:"short",day:"numeric",month:"short"});renderTasks();renderMoney();renderProgress();renderHistory();updateNotif()}
 document.getElementById("accountMain").addEventListener("click",createAccount);
-document.getElementById("guestBtn").addEventListener("click",guest);
+document.getElementById("skipBtn").addEventListener("click",function(){db.account={name:"Daniele",email:"",guest:true,premium:false};save();document.getElementById("account").classList.remove("active");document.getElementById("app").classList.add("ready");showScreen("today");render()});
 document.getElementById("accountSwitch").addEventListener("click",function(){alert("Il login cloud sarà collegato nella versione online. Per ora puoi usare l'account locale creato su questo dispositivo.")});
 document.getElementById("weightBtn").addEventListener("click",saveWeight);document.getElementById("walkBtn").addEventListener("click",saveWalk);document.getElementById("readBtn").addEventListener("click",saveRead);document.getElementById("expenseBtn").addEventListener("click",addExpense);document.getElementById("editGoals").addEventListener("click",function(){showScreen("setup")});document.getElementById("addGoal").addEventListener("click",addGoal);document.getElementById("saveGoals").addEventListener("click",finishSetup);document.getElementById("notifyBtn").addEventListener("click",enableNotifications);document.querySelectorAll(".nav button").forEach(function(b){b.addEventListener("click",function(){showScreen(b.dataset.screen)})});
+function openBudgetEditor(){var e=document.getElementById("budgetEditor");e.style.display=e.style.display==="none"?"block":"none";document.getElementById("budgetIncome").value=db.budget.income;document.getElementById("budgetFixed").value=db.budget.fixed;document.getElementById("budgetSavings").value=db.budget.savings}
+function saveBudget(){var income=parseFloat(document.getElementById("budgetIncome").value),fixed=parseFloat(document.getElementById("budgetFixed").value),savings=parseFloat(document.getElementById("budgetSavings").value);if(!isFinite(income)||income<0||!isFinite(fixed)||fixed<0||!isFinite(savings)||savings<0){alert("Inserisci valori validi.");return}if(fixed>income){alert("Le spese fisse non possono superare le entrate.");return}db.budget={income:Math.round(income*100)/100,fixed:Math.round(fixed*100)/100,savings:Math.round(savings*100)/100};save();document.getElementById("budgetEditor").style.display="none";render()}
+document.getElementById("editBudgetBtn").addEventListener("click",openBudgetEditor);document.getElementById("saveBudget").addEventListener("click",saveBudget);
 renderGoalEditor();render();save();
-setTimeout(function(){document.getElementById("splash").classList.add("hide");document.getElementById("app").classList.add("ready");if(!db.account)document.getElementById("account").classList.add("active")},1500);
+setTimeout(function(){document.getElementById("splash").classList.add("hide");if(db.account){document.getElementById("app").classList.add("ready");showScreen("today")}else{document.getElementById("account").classList.add("active");document.getElementById("app").classList.remove("ready")}},1500);
 })();
 </script>
 
-<section class="r20-water" id="r20Water" style="display:none" aria-label="Contatore acqua">
-  <div class="r20-head"><div><div class="r20-title">💧 Acqua</div><div class="r20-sub">Quanto hai bevuto oggi.</div></div><div class="r20-goal" id="r20WaterGoal">Obiettivo 2.000 ml</div></div>
-  <div class="r20-water-glass"><div class="r20-water-liquid" id="r20WaterLiquid"></div><div class="r20-water-pct" id="r20WaterPct">0%</div></div>
-  <div class="r20-values"><div><div class="r20-current" id="r20WaterCurrent">0 ml</div><div class="r20-sub">bevuti oggi</div></div><div class="r20-rem" id="r20WaterRem">2.000 ml rimanenti</div></div>
-  <form class="r20-actions" id="r20WaterForm"><input class="r20-input" id="r20WaterInput" type="number" min="1" max="10000" step="1" inputmode="numeric" placeholder="es. 200 ml" aria-label="Millilitri d'acqua"><button class="r20-btn primary" type="submit">+ Aggiungi</button></form>
-  <div class="r20-actions"><button class="r20-btn" type="button" data-r20-water="200">+200 ml</button><button class="r20-btn" type="button" data-r20-water="500">+500 ml</button></div>
-</section>
 
-<section class="r20-cal" id="r20Cal" style="display:none" aria-label="Contatore calorie">
-  <div class="r20-head"><div><div class="r20-title">🔥 Calorie</div><div class="r20-sub">Calorie registrate oggi.</div></div><div class="r20-goal" id="r20CalGoal">Obiettivo 2.000 kcal</div></div>
-  <div class="r20-cal-track"><div class="r20-cal-fill" id="r20CalFill"></div></div>
-  <div class="r20-values"><div><div class="r20-current" id="r20CalCurrent">0 kcal</div><div class="r20-sub">registrate oggi</div></div><div class="r20-rem" id="r20CalRem">2.000 kcal rimanenti</div></div>
-  <form class="r20-actions" id="r20CalForm"><input class="r20-input" id="r20CalName" type="text" maxlength="80" placeholder="es. Pasta al pomodoro" aria-label="Nome alimento"><input class="r20-input" id="r20CalInput" type="number" min="1" max="10000" step="1" inputmode="numeric" placeholder="kcal" aria-label="Calorie"><button class="r20-btn primary" type="submit">+ Aggiungi</button></form>
-  <div class="r20-actions"><button class="r20-btn" type="button" data-r20-cal="200">+200 kcal</button><button class="r20-btn" type="button" data-r20-cal="500">+500 kcal</button></div>
-</section>
 
 
 <script>
 (function(){
 'use strict';
-const WKEY='RESET20_test_water_v6', CKEY='RESET20_test_cal_v6';
-const dayKey=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
-const day=dayKey();
+var WKEY='RESET20_test_water_v6', CKEY='RESET20_test_cal_v6';
+function dayKey(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+var day=dayKey();
 function load(key,base){try{return Object.assign(base,JSON.parse(localStorage.getItem(key)||'{}'))}catch(e){return base}}
-let w=load(WKEY,{goal:2000,days:{}}), c=load(CKEY,{goal:2000,days:{},entries:{}});
+var w=load(WKEY,{goal:2000,days:{}}),c=load(CKEY,{goal:2000,days:{},entries:{}});
 w.goal=Number(w.goal)>0?Number(w.goal):2000;c.goal=Number(c.goal)>0?Number(c.goal):2000;
 w.days=w.days&&typeof w.days==='object'?w.days:{};c.days=c.days&&typeof c.days==='object'?c.days:{};c.entries=c.entries&&typeof c.entries==='object'?c.entries:{};
 if(!Object.prototype.hasOwnProperty.call(w.days,day))w.days[day]=0;
 if(!Object.prototype.hasOwnProperty.call(c.days,day))c.days[day]=0;
 if(!Array.isArray(c.entries[day]))c.entries[day]=[];
-const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-const fmt=n=>Math.round(n).toLocaleString('it-IT');
-function render(){
- const wd=Math.max(0,Number(w.days[day])||0),wp=Math.min(100,wd/w.goal*100),wr=Math.max(0,w.goal-wd);
- const cd=Math.max(0,Number(c.days[day])||0),cp=Math.min(100,cd/c.goal*100),cr=Math.max(0,c.goal-cd);
- const $=id=>document.getElementById(id);
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function fmt(n){return Math.round(n).toLocaleString('it-IT')}
+function renderTrackers(){
+ var wd=Math.max(0,Number(w.days[day])||0),wp=Math.min(100,wd/w.goal*100),wr=Math.max(0,w.goal-wd);
+ var cd=Math.max(0,Number(c.days[day])||0),cp=Math.min(100,cd/c.goal*100),cr=Math.max(0,c.goal-cd);
+ var $=function(id){return document.getElementById(id)};
  if($('r20WaterLiquid')){$('r20WaterLiquid').style.height=wp+'%';$('r20WaterPct').textContent=Math.round(wp)+'%';$('r20WaterCurrent').textContent=fmt(wd)+' ml';$('r20WaterRem').textContent=wr?fmt(wr)+' ml rimanenti':'Obiettivo completato';$('r20WaterGoal').textContent='Obiettivo '+fmt(w.goal)+' ml'}
  if($('r20CalFill')){$('r20CalFill').style.width=cp+'%';$('r20CalCurrent').textContent=fmt(cd)+' kcal';$('r20CalRem').textContent=cr?fmt(cr)+' kcal rimanenti':'Obiettivo raggiunto';$('r20CalGoal').textContent='Obiettivo '+fmt(c.goal)+' kcal'}
 }
-function addWater(v){v=Number(v);if(!Number.isFinite(v)||v<=0)return;w.days[day]=(Number(w.days[day])||0)+v;save(WKEY,w);render()}
-function addCal(v,n){v=Number(v);if(!Number.isFinite(v)||v<=0)return;c.days[day]=(Number(c.days[day])||0)+v;c.entries[day].push({id:Date.now(),name:(n||'Calorie').trim(),kcal:v});save(CKEY,c);render()}
+function addWater(v){v=Number(v);if(!Number.isFinite(v)||v<=0)return;w.days[day]=(Number(w.days[day])||0)+v;save(WKEY,w);renderTrackers()}
+function addCal(v,n){v=Number(v);if(!Number.isFinite(v)||v<=0)return;c.days[day]=(Number(c.days[day])||0)+v;c.entries[day].push({id:Date.now(),name:(n||'Calorie').trim(),kcal:v});save(CKEY,c);renderTrackers()}
 function setup(){
- const wf=document.getElementById('r20WaterForm'),wi=document.getElementById('r20WaterInput');
- if(wf)wf.addEventListener('submit',e=>{e.preventDefault();addWater(wi.value);wi.value='';wi.focus()});
- document.querySelectorAll('[data-r20-water]').forEach(b=>b.addEventListener('click',()=>addWater(b.dataset.r20Water)));
- const cf=document.getElementById('r20CalForm'),ci=document.getElementById('r20CalInput'),cn=document.getElementById('r20CalName');
- if(cf)cf.addEventListener('submit',e=>{e.preventDefault();addCal(ci.value,cn.value);ci.value='';cn.value='';cn.focus()});
- document.querySelectorAll('[data-r20-cal]').forEach(b=>b.addEventListener('click',()=>addCal(b.dataset.r20Cal,'')));
- render();
+ var wf=document.getElementById('r20WaterForm'),wi=document.getElementById('r20WaterInput');
+ if(wf)wf.addEventListener('submit',function(e){e.preventDefault();addWater(wi.value);wi.value='';wi.focus()});
+ document.querySelectorAll('[data-r20-water]').forEach(function(b){b.addEventListener('click',function(){addWater(b.dataset.r20Water)})});
+ var cf=document.getElementById('r20CalForm'),ci=document.getElementById('r20CalInput'),cn=document.getElementById('r20CalName');
+ if(cf)cf.addEventListener('submit',function(e){e.preventDefault();addCal(ci.value,cn.value);ci.value='';cn.value='';cn.focus()});
+ document.querySelectorAll('[data-r20-cal]').forEach(function(b){b.addEventListener('click',function(){addCal(b.dataset.r20Cal,'')})});
+ renderTrackers();
 }
-window.RESET20_revealTracking=function(){const a=document.getElementById('r20Water'),b=document.getElementById('r20Cal');if(a)a.style.display='';if(b)b.style.display='';render()};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
 })();
 </script>
-
-
-<script>
-(function(){
-'use strict';
-function check(){
- const t=(document.body.innerText||'').toLowerCase();
- const login=/crea account|continua come ospite|accedi|registrati/.test(t);
- const setup=/personalizza|scegli i tuoi obiettivi/.test(t);
- if(!login&&!setup&&window.RESET20_revealTracking)window.RESET20_revealTracking();
- else setTimeout(check,700);
-}
-setTimeout(check,1200);
-})();
-</script>
-
 </body>
 </html>
